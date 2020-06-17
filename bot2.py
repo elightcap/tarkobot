@@ -51,4 +51,8 @@ async def on_message(message):
         mes = "try !price 'item name' to get the price of an item"
         await message.channel.send(mes)
 
+    elif "!owen" in message.content:
+        mes = "owen its one command please stop it please"
+        await message.channel.send(mes)
+
 client.run(TOKEN)
