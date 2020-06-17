@@ -36,7 +36,6 @@ async def on_message(message):
                 name = item['name']
                 img = item['img']
                 link = item['link']
-                mes = "The price for {} is {:,} rubles".format(name,price)
                 embed = discord.Embed(title="{}".format(title), description="{}".format(name), color=0x00ff00)
                 embed.add_field(name="Link", value="{}".format(link), inline=False)
                 embed.add_field(name="Price", value="{}".format(price), inline=False)
@@ -47,5 +46,9 @@ async def on_message(message):
             rInsult = random.choice(insult)
             mes = "Item {} not found you {}".format(mItem, rInsult)
             await message.channel.send(mes)
+
+    elif "!tarkohelp" in message.content:
+        mes = "try !price 'item name' to get the price of an item"
+        await message.channel.send(mes)
 
 client.run(TOKEN)
