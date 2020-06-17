@@ -42,7 +42,8 @@ async def on_message(message):
                 embed.set_image(url="{}".format(img))
                 await message.channel.send(embed=embed)
 
-        except:
+        except requests.exceptions.RequestException as e:
+            print(str(e))
             rInsult = random.choice(insult)
             mes = "Item {} not found you {}".format(mItem, rInsult)
             await message.channel.send(mes)
