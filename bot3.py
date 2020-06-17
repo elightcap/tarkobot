@@ -16,7 +16,7 @@ KEY = os.getenv('TARKOV_KEY')
 headers = {'x-api-key': KEY}
 client = discord.Client()
 insult = ["idiot", "dummy", "stupid", "shithead"]
-emoji = [":monkahmm:", ":monkaw:", ":notlikethis:", ":bttv_111:"]
+emoji = ["<:notlikethis:715327078031163464>", "<:monkahmm:715327077687230526>", "<:monkaw:715327077670322186>", "<a:bttv_111:715328133686886420>"]
 
 @client.event
 async def on_message(message):
@@ -72,7 +72,7 @@ async def on_message(message):
         await message.channel.send(mes)
 
     elif "!secret" in message.content:
-        mes = "/spoiler if you clicked this you a bitch"
+        mes = "||if you clicked this you a bitch||"
         await message.channel.send(mes)
 
 client.run(TOKEN)
