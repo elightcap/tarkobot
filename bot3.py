@@ -47,23 +47,23 @@ async def on_message(message):
                 embed.set_image(url="{}".format(img))
                 await message.channel.send(embed=embed)
 
-    elif "!tarkohelp" in message.content:
+    elif message.content == "!tarkohelp":
         mes = "Please include the command you would like help with, example: !tarkohelp !price  --   You can get a list of commands with !tarkocommands"
         await message.channel.send(mes)
 
     elif "!tarkocommands" in message.content:
-        mes = "!price, !owen, !secret"
+        mes = "price, owen, secret"
         await message.channel.send(mes)
 
-    elif "!tarkohelp !price" in message.content:
+    elif "!tarkohelp price" in message.content:
         mes = "try !price 'item name' to get the price of an item"
         await message.channel.send(mes)
         
-    elif "!tarkohelp !owen" in message.content:
+    elif "!tarkohelp owen" in message.content:
         mes = "try !owen to see how evan is sassy with owen"
         await message.channel.send(mes)
         
-    elif "!tarkohelp !secret" in message.content:
+    elif "!tarkohelp secret" in message.content:
         mes = "try !secret if you aint a bitch"
         await message.channel.send(mes)
 
