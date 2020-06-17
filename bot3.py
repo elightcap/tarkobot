@@ -26,11 +26,15 @@ async def on_message(message):
     if "!price" in message.content:
         list = message.content.split()
         mItem = itemgetter(1)(list)
-        try:
-            url = "https://tarkov-market.com/api/v1/item?q={}".format(mItem)
-            r = requests.get(url, headers=headers)
-            json_data = json.loads(r.text)
-
+        url = "https://tarkov-market.com/api/v1/item?q={}".format(mItem)
+        r = requests.get(url, headers=headers)
+        json_data = json.loads(r.text)
+        if len(r.text) < 4:
+            rInsult = random.choice(insult)
+            rEmoji = random.choice(emoji)
+            mes = "Item {} not found you {} {}".format(mItem, rInsult, rEmoji)
+            await message.channel.send(mes)
+        else:
             for item in json_data:
                 title = item['shortName']
                 price = item['avg24hPrice']
@@ -43,13 +47,6 @@ async def on_message(message):
                 embed.set_image(url="{}".format(img))
                 await message.channel.send(embed=embed)
 
-        except requests.exceptions.RequestException as e:
-            print(str(e))
-            rInsult = random.choice(insult)
-            rEmoji = random.choice(emoji)
-            mes = "Item {} not found you {} {}".format(mItem, rInsult, mEmoji)
-            await message.channel.send(mes)
-            
     elif "!tarkohelp" in message.content:
         mes = "Please include the command you would like help with, example: !tarkohelp !price  --   You can get a list of commands with !tarkocommands"
         await message.channel.send(mes)

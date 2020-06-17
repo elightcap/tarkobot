@@ -15,7 +15,7 @@ KEY = os.getenv('TARKOV_KEY')
 
 headers = {'x-api-key': KEY}
 client = discord.Client()
-insult = ["idiot", "dummy", "stupid", "shithead"]
+insult = ["idiot", "dummy", "stupid", "shithead", "Tyler"]
 
 @client.event
 async def on_message(message):
