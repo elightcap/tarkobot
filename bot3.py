@@ -43,7 +43,7 @@ async def on_message(message):
                 link = item['link']
                 embed = discord.Embed(title="{}".format(title), description="{}".format(name), color=0x00ff00)
                 embed.add_field(name="Link", value="{}".format(link), inline=False)
-                embed.add_field(name="Price", value="{}".format(price), inline=False)
+                embed.add_field(name="Price", value="{:,}".format(price), inline=False)
                 embed.set_image(url="{}".format(img))
                 await message.channel.send(embed=embed)
 
