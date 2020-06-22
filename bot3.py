@@ -4,6 +4,8 @@ import requests
 import discord
 import json
 import random
+import threading
+import time
 
 from dotenv import load_dotenv
 from operator import itemgetter
@@ -34,7 +36,11 @@ async def on_message(message):
             rInsult = random.choice(insult)
             rEmoji = random.choice(emoji)
             mes = "Item {} not found you {} {}".format(mItem, rInsult, rEmoji)
-            await message.channel.send(mes)
+            send = await message.channel.send(mes)
+            time.sleep(5)
+            await message.delete()
+            await send.delete()
+            await message.delete()
         else:
             for item in json_data:
                 title = item['shortName']
@@ -46,7 +52,10 @@ async def on_message(message):
                 embed.add_field(name="Link", value="{}".format(link), inline=False)
                 embed.add_field(name="Price", value="{:,}".format(price), inline=False)
                 embed.set_image(url="{}".format(img))
-                await message.channel.send(embed=embed)
+                send = await message.channel.send(embed=embed)
+                time.sleep(15)
+                await message.delete()
+                await send.delete()
 
     elif case == "!tarkohelp":
         mes = "Please include the command you would like help with, example: !tarkohelp !price  --   You can get a list of commands with !tarkocommands"
