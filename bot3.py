@@ -54,8 +54,8 @@ async def on_message(message):
                 embed.set_image(url="{}".format(img))
                 send = await message.channel.send(embed=embed)
                 time.sleep(15)
-                await message.delete()
                 await send.delete()
+                await message.delete()
 
     elif case == "!tarkohelp":
         mes = "Please include the command you would like help with, example: !tarkohelp !price  --   You can get a list of commands with !tarkocommands"
