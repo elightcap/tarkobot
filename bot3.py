@@ -55,7 +55,7 @@ async def on_message(message):
                 send = await message.channel.send(embed=embed)
                 time.sleep(15)
                 await send.delete()
-                await message.delete()
+            await message.delete()
 
     elif case == "!tarkohelp":
         mes = "Please include the command you would like help with, example: !tarkohelp !price  --   You can get a list of commands with !tarkocommands"
