@@ -26,6 +26,8 @@ async def on_message(message):
         return
     msg = message.content
     case = msg.lower()
+    if  " " in case:
+        case.replace(" ", "+")
     if "!price" in case:
         list = message.content.split()
         mItem = itemgetter(1)(list)
