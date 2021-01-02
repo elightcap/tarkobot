@@ -27,12 +27,8 @@ async def on_message(message):
     msg = message.content
     case = msg.lower()
     if "!price" in case:
-        str1 = case.replace("!price ","")
-        if " " in str1:
-            mItem = str1.replace(" ","+")
-        else:
-            mItem = str1
-        #mItem = itemgetter(1)(list)
+        list = message.content.split()
+        mItem = itemgetter(1)(list)
         url = "https://tarkov-market.com/api/v1/item?q={}".format(mItem)
         r = requests.get(url, headers=headers)
         json_data = json.loads(r.text)
@@ -59,7 +55,7 @@ async def on_message(message):
                 send = await message.channel.send(embed=embed)
                 time.sleep(15)
                 await send.delete()
-            await message.delete()
+        await message.delete()
 
     elif case == "!tarkohelp":
         mes = "Please include the command you would like help with, example: !tarkohelp !price  --   You can get a list of commands with !tarkocommands"
