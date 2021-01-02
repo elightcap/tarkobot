@@ -24,6 +24,8 @@ emoji = ["<:notlikethis:715327078031163464>", "<:monkahmm:715327077687230526>", 
 async def on_message(message):
     if message.author == client.user:
         return
+    if  " " in message.content
+        message.content.replace(" ", "+")
     msg = message.content
     case = msg.lower()
     if "!price" in case:
