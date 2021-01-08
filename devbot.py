@@ -9,6 +9,7 @@ import time
 
 from dotenv import load_dotenv
 from operator import itemgetter
+from bs4 import BeautifulSoup(html_doc, 'html.parser')
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -98,4 +99,9 @@ async def on_message(message):
         mes = "Shutup Tyler"
         await message.channel.send(mes)
 
+    elif "!task" in case:
+         mTask = case.replace("!task ","")
+        wUrl= "https://escapefromtarkov.gamepedia.com/Quests"
+        r = requests.get(url)
+        print(r)
 client.run(TOKEN)
